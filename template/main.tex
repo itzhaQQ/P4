@@ -1,0 +1,65 @@
+\input{config.tex}
+\addbibresource{refs.bib}
+% === Header =======================
+\setlength\headheight{24pt}
+\setlength\footheight{15pt}
+\ihead{\textbf{VXXX: Versuchname}}			% inner header
+\chead{}						% center header
+\ohead{\textbf{\headmark}}		% outer header
+\cfoot*{\pagemark}				% center footer
+\automark{section}				
+\KOMAoptions{headsepline=.4pt:19\textwidth}  % 0.4pt thick line, full width
+\renewcommand*\chapterheadstartvskip{\vspace*{-1cm}}
+
+% ==================================
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+\textsc{\LARGE }\\[1.5cm] % Name of your university/college
+\textsc{\LARGE Praktikum 4}\\[0.5cm] % Major heading such as course name
+\textsc{\large Atome, Moleküle, kondensierte Materie}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+\HRule \\[0.4cm]
+{ \huge \bfseries Versuch XXX: Versuchs- \\[0.3cm] Name}\\[0.4cm] % Title of your document
+\HRule \\[0.2cm]
+\Large{\textsc{GruppeXX}}\\[0.2cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\textsc{Parth Gadhavi} % Your name
+\end{flushleft}
+\end{minipage}
+%~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\textsc{Jaffar Al Naggar}
+\end{flushright}
+\end{minipage}\\[2.0cm]
+
+{\large Versuchsdurchführung\, XX/XX. Monat 2025 }\\[8cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+\includegraphics[width=6 cm]{logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+\tableofcontents
+\clearpage
+\clearpage
+\setcounter{page}{1}
+\include{Einleitung}
+\include{durchfuhrung}+
+\include{auswertung}
+\printbibliography
+\end{document}
