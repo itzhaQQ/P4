@@ -1,0 +1,184 @@
+%\documentclass[%
+%paper=a4,       % Papiergröße
+%fontsize=12pt,  % Schriftgröße
+%ngerman         % Option für deutsche Sprache
+%]{scrreprt}
+
+% Basics für Codierung und Sprache
+% ===========================================================
+\usepackage{framed}
+\usepackage{lipsum}
+\usepackage[final]{graphicx}          % Einbindung von Grafiken
+\graphicspath{{figs/}}
+\usepackage{subcaption}
+\usepackage{babel}                    % deutsche Silbentrennung, etc.
+\usepackage[german=quotes]{csquotes}  % deutsche Anführungszeichen mit \enquote{...}
+\usepackage{titling}
+\usepackage{booktabs} % für tabellen
+\RequirePackage[backend=biber, style=numeric]{biblatex}     % erlaubt das Einfügen eines Quellenverzeichnisses
+% ===========================================================
+
+% Fonts und Typographie
+% ===========================================================
+%\usepackage{sourcecodepro}
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+%\usepackage{mathptmx}
+\usepackage{mathpazo} % Palatino
+%\usepackage{helvet} % Helvetica
+%\usepackage{courier} % Courier
+%\usepackage{times}
+\usepackage{fix-cm}
+\usepackage{anyfontsize}
+%\usepackage[default]{sourcesanspro}
+%\usepackage{nimbusmononarrow}
+
+\usepackage[babel=true,final,tracking=smallcaps]{microtype}
+\DisableLigatures{encoding = T1, family = tt* }   % keine Ligaturen für Monospace-Fonts
+% ===========================================================
+
+% Farben
+% ===========================================================
+\usepackage[x11names]{xcolor}
+% ===========================================================
+
+% Mathe-Pakete und -Einstellungen
+% ===========================================================
+%\usepackage{yhmath}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}             % Tools zum Setzen von Formeln
+\usepackage{amssymb,}               % übliche Mathe-Symbole
+\usepackage[bigdelims]{newtxmath}  % moderne Mathe-Font
+\allowdisplaybreaks                % seitenübergreifende Rechnungen
+\usepackage{bm}                    % math bold font
+\usepackage{wasysym}               % noch mehr Symbole
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}} % Kommas als Dezimalteiler
+\DeclareSIUnit\barn{b}
+% ===========================================================
+
+% TikZ
+% ===========================================================
+\usepackage{tikz}
+\usetikzlibrary{arrows,arrows.meta}   % mehr Pfeile!
+\usetikzlibrary{calc}                 % TikZ kann rechnen
+\usetikzlibrary{positioning}
+\tikzset{>=Latex}                     % Standard-Pfeilspitze
+% ===========================================================
+
+% Seitenlayout, Kopf-/Fußzeile
+% ===========================================================
+\usepackage[bottom=3cm, left=2.5cm, right=2cm]{geometry}
+\RequirePackage[headsepline]{scrlayer-scrpage} % edit header and footer of a page, for more lines add [headtopline, headsepline, footsepline, footbotline]
+\pagestyle{scrheadings} % set formatting to scrheadings
+\clearpairofpagestyles
+\setkomafont{pageheadfoot}{}
+
+% ===========================================================
+
+% Hyperref für Referenzen und Hyperlinks
+% ===========================================================
+\usepackage[%
+hidelinks,
+pdfpagelabels,
+bookmarksopen=true,
+bookmarksnumbered=true,
+linkcolor=black,
+urlcolor=SkyBlue2,
+plainpages=false,
+pagebackref,
+citecolor=black,
+hypertexnames=true,
+pdfborderstyle={/S/U},
+linkbordercolor=SkyBlue2,
+colorlinks=false,
+backref=false]{hyperref}
+\hypersetup{final}
+\usepackage{cleveref}
+\crefname{figure}{Abb.}{Abb.}
+\crefname{table}{Tab.}{Tab.}
+\crefname{equation}{Gl.}{Gl.}
+% ===========================================================
+
+% Listen und Tabellen
+% ===========================================================
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\setlist{itemsep=0pt}
+\setlist[enumerate]{font=\sffamily\bfseries}
+\setlist[itemize]{label=$\triangleright$}
+\usepackage{tabularx}
+% ===========================================================
+
+% listings
+% ===========================================================
+\usepackage{listingsutf8}
+\lstset{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	showstringspaces=false,
+	basicstyle=\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	stringstyle=\color{orange},
+	numbers=left,
+	numberstyle=\footnotesize\ttfamily\color{gray},
+	inputencoding=utf8/latin1,
+	tabsize=4,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Ab hier folgen nur noch vordefinierte Shortcuts %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\oh}{\mathcal{O}}
+
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\wh}[1]{\widehat{#1}}
+
+\DeclareMathOperator{\id}{id}                        % Identität
+\DeclareMathOperator{\pot}{\mathcal{P}}              % Potenzmenge
+
+% Klammerungen und ähnliches
+\DeclarePairedDelimiter{\absolut}{\lvert}{\rvert}    % Betrag
+\DeclarePairedDelimiter{\ceiling}{\lceil}{\rceil}    % aufrunden
+\DeclarePairedDelimiter{\Floor}{\lfloor}{\rfloor}    % aufrunden
+\DeclarePairedDelimiter{\Norm}{\lVert}{\rVert}       % Norm
+\DeclarePairedDelimiter{\sprod}{\langle}{\rangle}    % spitze Klammern
+\DeclarePairedDelimiter{\enbrace}{(}{)}              % runde Klammern
+\DeclarePairedDelimiter{\benbrace}{\lbrack}{\rbrack} % eckige Klammern
+\DeclarePairedDelimiter{\penbrace}{\{}{\}}           % geschweifte Klammern
+\newcommand{\Underbrace}[2]{{\underbrace{#1}_{#2}}}  % bessere Unterklammerungen
+
+% Kurzschreibweisen für Faule und Code-Vervollständigung
+\newcommand{\abs}[1]{\absolut*{#1}}
+\newcommand{\ceil}[1]{\ceiling*{#1}}
+\newcommand{\flo}[1]{\Floor*{#1}}
+\newcommand{\no}[1]{\Norm*{#1}}
+\newcommand{\sk}[1]{\sprod*{#1}}
+\newcommand{\enb}[1]{\enbrace*{#1}}
+\newcommand{\penb}[1]{\penbrace*{#1}}
+\newcommand{\benb}[1]{\benbrace*{#1}}
+\newcommand{\stack}[2]{\makebox[1cm][c]{$\stackrel{#1}{#2}$}}
+
+%\newcommand{\vector}[1]{%
+%\begin{pmatrix} #1 \end{pmatrix}
+%}
+%==== Enumerationstyle 1.1.1
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+%
+
+\newcommand{\cby}[1]{\colorbox{yellow}{#1}} % yellow colorbox
+\newcommand{\cbb}[1]{\colorbox{black}{#1}} % black colorbox
+
+
