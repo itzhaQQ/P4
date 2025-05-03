@@ -57,23 +57,123 @@ Je nach Beobachtungsrichtung relativ zum Magnetfeld lassen sich unterschiedliche
     \item \textbf{Transversale Konfiguration:} Magnetfeld $B$ ist senkrecht zur Beobachtungsrichtung. Es treten linear polarisierte Komponenten auf ($\pi$- und $\sigma$-Komponenten).
 \end{itemize}
 %--
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
-    \includegraphics[]{Niveauaufspaltung_Cd.png}
-    \caption[Niveauaufspaltung des$5^1D_2 \rightarrow 5^1P_1$-Übergangs bei Cd]{Niveauaufspaltung des $5^1D_2 \rightarrow 5^1P_1$-Übergangs beim normalen \texttt{Zeemann}-Effekt an Cadmium \autocite{LD}}
-    \label{fig:cd_niveaus}
+    \includegraphics[width=.4\linewidth]{Niveauaufspaltung_Cd.png}
+    \caption[Niveauaufspaltung des$5^1D_2 \rightarrow 5^1P_1$-Übergangs bei Cd]{Niveauaufspaltung des $5^1D_2 \rightarrow 5^1P_1$-Übergangs beim normalen \texttt{Zeemann}-Effekt an Cadmium~\cite{LD}}\label{fig:cd_niveaus}
 \end{figure}
 %--
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.8\linewidth]{Dipolstrahlung_Verteilung.PNG}
-    \caption[Winkelverteilung der elektischen Dipolstrahlung]{Winkelverteilung der elektischen Dipolstrahlung; $\Delta M_J$ - Drehimpulsrichtung der emittierten Photonen \cite{LD}}
-    \label{fig:polarisation}
+    \includegraphics[width=.55\linewidth]{Dipolstrahlung_Verteilung.PNG}
+    \caption[Winkelverteilung der elektischen Dipolstrahlung]{Winkelverteilung der elektischen Dipolstrahlung; $\Delta M_J$ -- Drehimpulsrichtung der emittierten Photonen~\cite{LD}}\label{fig:polarisation} % chktex 8
 \end{figure}
 %
 % -----
 %
+%\clearpage
 \section{Aufbau}
-Zur Untersuchung des \texttt{Zeemann}-Effekts wird eine
+Zur Untersuchung des \texttt{Zeemann}-Effekts wird eine Cadmiumlampe verwendet, deren Emissionsspektrum die relevante rote Spektrallinie bei $\lambda = 644 \, \mathrm{nm}$ enthält. Die Lampe befindet sich zwischen den Polschuhen eines Elektromagneten, dessen homogenes Magnetfeld durch ein Hochstromnetzgerät erzeugt und über eine Hall-Sonde kallibriert wird. Die optische Strahlführung umfasst folgende Komponenten zu Erzeugung eines Interferenzbildes (siehe \cref{fig:aufbau_zeemann}):
+%--
+\begin{itemize}
+    \item Eine \textbf{Kondensorlinse} (Brennweite $f = \SI{150}{\milli\meter}$ erzeugt eine parallele Beleuchtung).
+    \item Ein \textbf{Fabry-Pérot-Etalon} mit einem Plattenabstand von $d = \SI{4}{\milli\meter}$, einem Brechungsindex $n = 1.457$ und einem Reflexionsgrad von $R = 0.85$.
+    \item Eine Abbildungslinse (ebenfalls $f = \SI{150}{\milli\meter}$) bildet die Interferenzringe ab.
+    \item Ein \textbf{Interferenzfilter} mit einer Mittelwellenlänge von $\lambda = \SI{643,8\pm 2,0}{\nano\meter}$ selektiert die zu untersuchende Spektrallinie.
+    \item Zur Analyse der Polarisation werden ein Polarisationsfilter und eine Viertelwellenlängeplatte verwendet.
+\end{itemize}
+%--
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\linewidth]{ZeemanAufbau.png}
+    \caption[Aufbau der Versuchsanordnung zum Zeemann-Effekt]{Versuchsaufbau zur Messung des \texttt{Zeemann}-Effekts mit (a) Cadmiumlampe, (b) Klammern, (c) Polschuhe, (d) / (f) Sammellinsen, (e) Fabry-Pérot-Etalon, (g) Interferenzfilter und (h) Okular mit Strichskala~\cite{LD}.}\label{fig:aufbau_zeemann}
+\end{figure}
+%--
+Die Beobachtung erfolgt zunächst mit einem Okular. Für die quantitative Auswertung wird das Okular dann durch eine CCD-Kamera ersetzt, welche das Intensitätsprofil der Interferenzringe entlang einer Linie in das Messprogramm überträgt.
+\vspace{0.3cm}\\
+Das \texttt{Fabry-Pérot}-Etalon (\cref{fig:fabry_perot}) ist ein Interferometer, das zur hochauflösung spektraler Aufspaltung genutzt wird. Es besteht aus zwei planparallelen, hochreflektierenden Glasplatten mit einem festen Abstand $d$ zueinander. Licht, dass in einem bestimmten Winkel $\alpha$ in das Etalon eintritt, wird an den beiden Platten mehrfach hin- und herreflektiert, sodass durch Interferenz bestimmte Wellenlängen konstruktiv verstärkt und andere ausgelöscht werden.
+%--
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.4\linewidth]{Fabry_Perot.PNG}
+    \caption[Fabry-Pérot-Etalon]{Intensität der Interferenzringe in Abhängigkeit von der Wellenlänge~\cite{LD}.}\label{fig:fabry_perot}
+\end{figure}
+%--
 
-\subsubsection{Subsubsection}
+\noindent Die Bedingung für konstruktive Interferenz ergibt sich aus dem optischen Wegunterschied zwischen den reflektierten Teilstrahlen:
+%--
+\begin{equation}
+    2nd \cos(\alpha) = m \lambda
+\end{equation}
+%--
+wobei $n$ der Brechungsindex des Mediums zwischen den Platten, $d$ der Abstand der Platten, $m \in \mathbb{Z}$ die Interferenzrdnung und $\lambda$ die Wellenlänge des Lichts ist.\\
+Die resultierende Intensitätsverteilung zeigt sich in Form konzentischer Ringe (Interferenzringe), die bei Verwendung eines monochromatischen Lichtfilters einer bestimmten Spektrallinie zugeordnet werden können.\\
+Die Finesse $\mathcal{F}$ des Etalons beschreibt die Güte der Interferenz und ist definiert als das Verhältnis der Wellenlängenabstände $\Delta \lambda$ der benachbarten Maxima zur Breite $\Delta \lambda_0$ des zentralen Maximums:
+%--
+\begin{equation}
+    \mathcal{F} = \frac{\Delta \lambda}{\Delta \lambda_0} = \frac{\pi\sqrt{R}}{1-R}
+\end{equation}
+%--
+Die Finesse  ist ein Maß für die Anzahl der Interferenzmaxima, die innerhalb einer bestimmten Wellenlängenbreite auftreten können.\\
+Die Auflösung $A$ des Etalons ist definiert als das Verhältnis der Wellenlängen $\lambda$ zur Breite $\Delta \lambda$ der Maxima:
+%--
+\begin{equation}
+    A = \frac{\lambda}{\Delta \lambda}
+\end{equation}
+%--
+Die Auflösung ist ein Maß dafür, wie gut das Etalon in der Lage ist, benachbarte Spektrallinien zu trennen.\\
+%
+%--
+%
+\section{Beobachtung der Aufspaltung}
+%
+%--
+%
+\subsection{Justage}
+Nachdem die Lampe für etwa 2 Minuten warm gelaufen ist, wird der optische Aufbau mit Hilfe des Okulars justiert, um ein symmetrisches und zentriertes Interferenzmuster zu erhalten.\\
+Dafür wird zunächst das Okular scharf auf die Strichskala eingestellt. Die Cadmiumlampe wird so positioniert, dass die Lichtquelle möglichst mittig im Magnetfeld liegt. Die Kondensorlinse wurde justiert, um eine parallele Ausleuchtung des Etalons zu erreichen.\\
+Die Position der zweiten Linse sowie des Beobachtungspfades (jetzt Okular später CCD-Kamera) werden so eingestellt, dass das durch das Fabry-Pérot-Etalon erzeugte Ringsystem mittig und scharf abgebildet wird.\\
+Durch leichtes Kippen des Etalons kann das Zentrum des Ringsystems auf die Strichskala eingestellt werden.
+\vspace{0.3cm}\\
+Um longitudinale und transversale Konfigurationen zu untersuchen wird die Halterung der Spulen zusammen mit der Cd-Lampe um $90^{\circ}$ gedreht (\cref{fig:aufbau_zeemann_above}).\\
+%--
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\linewidth]{ZeemanAufbaufromAbove.png}
+    \caption[Longitudinale und Transversale Konfiguration Zeemann-Effekt]{Aufbau zur Messung in transversaler Konfiguration (oben) und longitudinaler Konfiguration (unten) von oben betrachtet mit (i) Viertel-Wellenlängen-Platte und (k) Polarisationsfilter~\cite{LD}.}\label{fig:aufbau_zeemann_above}
+\end{figure}
+%--
+\noindent Zur Beobachtung der jeweiligen Komponenten werden die Polarisationsfilter und die Viertelwellenlängenplatte in den Strahlengang eingebaut.\\
+%
+%--
+%
+\subsection{Transversale Konfiguration}
+%--
+\begin{figure}[ht]
+    \begin{center}
+        \subcaptionbox{\texttt{Zeemann}-Aufspaltung in transversaler Konfiguration (A) ohne Magnetfeld, (B) mit Magnetfeld, (C) mit Polarisationsfilter auf $0^{\circ}$ und (D) mit Polarisationsfilter auf $90^{\circ}$. Für das Magnetfeld wurde der Strom jeweils auf $\SI{6,9}{\ampere}$ eingestellt}{\includegraphics[width=0.49\textwidth]{Transversal.png}}\label{fig:trans_all}
+        \subcaptionbox{Einstellung des Stroms auf $\SI{4,7}{\ampere}$ bis die aufgespalteten Linien ohne Filter gerade unterschieden werden können}{\includegraphics[width=0.49\textwidth]{Trans_Strom.png}}\label{fig:trans_strom}
+    \end{center}
+\end{figure}
+%--
+\clearpage
+\noindent Bei Ausgeschaltetem Magnetfeld (\cref{fig:trans_all} (A)) sind die konzentrischen Interferenzringe durch Mehrfachinterferenz von kohärentem Licht im Etalon sichtbar. Die verwendetete Cd-Lampe emmitiert spektrale Linien, unter anderem bei einer Wellenlänge von $\lambda = \SI{643,8}{\nano\meter}$, die einem elektronischen Übergang vom angeregten Zustand $5^1D_2$ in den Grundzustand $5^1P_1$ entspricht. Um sicherzustellen, dass ausschließlich diese Übergangslinie beobachtet wird, wird durch den Interferenzfilter eine Durchlassbreite von $\pm \SI{2}{\nano\meter}$ ausgewählt.
+\vspace{0.2cm}\\
+Der Magnetstrom wird auf $\SI{6,9}{\ampere}$ eingestellt, sodass die Aufspaltung der Spektrallinie sichtbar wird (\cref{fig:trans_all} (B)). Der mittlere Ring ist dabei am stärksten ausgeprägt und entspricht der $\pi$-Komponente ($\Delta M_J=0$), während die äußeren Ringe innen schwächer sind und den $\sigma^\pm$-Komponenten ($\Delta M_J=\pm 1$) entsprechen.\\ 
+Die $\sigma$-Komponenten werden über ihre radiale Verschiebung im Interferenzbild identifiziert: Die Linie mit geringerer Wellenlänge ($\sigma^+$) ist nach außen verschoben, die Linie mit größerer Wellenlänge ($\sigma^-$) nach innen.\\
+Die intensität der Komponenten variiert im Verlauf der Messung, insbesondere im Vergleich zum Bild ohne Magnetfeld.
+\vspace{0.2cm}\\
+\noindent Bei Verwendung des Polarisationsfilters auf $0^{\circ}$ (\cref{fig:trans_all} (C)) zwischen Kondensonrlinse und Etalon werden die $\sigma^\pm$-Komponenten aufgrund ihrer Polarisationsrichtung herausgefiltert.
+\vspace{0.2cm}\\
+\noindent Wird der Polarisationsfilters nun auf $90^{\circ}$ eingestellt (\cref{fig:trans_all} (D)), wird die $\pi$-Komponente herausgefiltert, sodass nur die $\sigma^\pm$-Komponenten sichtbar sind.
+%
+%--
+%
+\subsection{Longitudinale Konfiguration}
+%--
+\begin{figure}[ht]
+    \begin{center}
+        \subcaptionbox{\texttt{Zeemann}-Aufspaltung in longitudinaler Konfiguration (A) ohne Magnetfeld, (B) mit Magnetfeld, (C) mit Viertel-Wellenlänge-Platte auf $0^{\circ}$ und Polarisationsfilter auf $-45^{\circ}$ und (D) mit Viertel-Wellenlänge-Platte auf $0^{\circ}$ und mit Polarisationsfilter auf $+45^{\circ}$. Für das Magnetfeld wurde der Strom jeweils auf $\SI{2,5}{\ampere}$ eingestellt}{\includegraphics[width=0.49\textwidth]{Longitudinal.png}}\label{fig:long_all}
+        \subcaptionbox{Einstellung des Stroms auf $\SI{1,7}{\ampere}$ bis die aufgespalteten Linien ohne Filter gerade unterschieden werden können}{\includegraphics[width=0.49\textwidth]{Long_Strom.png}}\label{fig:long_strom}
+    \end{center}
+\end{figure}

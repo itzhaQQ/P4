@@ -3,7 +3,7 @@ paper=a4,       % Papiergröße
 fontsize=11pt,  % Schriftgröße
 ngerman         % Option für deutsche Sprache
 ]{scrreprt}
-
+\usepackage{scrhack}
 \input{config.tex}
 \addbibresource{refs.bib}
 %\addfigurepath{figs}
@@ -25,16 +25,16 @@ ngerman         % Option für deutsche Sprache
 
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-\center
+\center{}
 \textsc{\LARGE }\\[1.5cm] % Name of your university/college
 \textsc{\LARGE Praktikum 4}\\[0.5cm] % Major heading such as course name
 \textsc{\large Atome, Moleküle, kondensierte Materie}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
-\HRule \\[0.4cm]
+\HRule{}\\[0.4cm]
 { \huge \bfseries Versuch 401: Elektronische Übergänge\\[0.3cm] in Atomen}\\[0.4cm] % Title of your document
-\HRule \\[0.2cm]
+\HRule{}\\[0.2cm]
 \Large{\textsc{Gruppe A201}}\\[0.2cm]
  
 %----------------------------------------------------------------------------------------
@@ -71,5 +71,5 @@ ngerman         % Option für deutsche Sprache
 \include{FrankHertz}
 \listoffigures
 \listoftables
-\printbibliography
+\printbibliography{}
 \end{document}

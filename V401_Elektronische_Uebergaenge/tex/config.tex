@@ -51,9 +51,9 @@
 \usepackage{mathtools}             % Tools zum Setzen von Formeln
 \usepackage{amssymb,}               % übliche Mathe-Symbole
 \usepackage[bigdelims]{newtxmath}  % moderne Mathe-Font
-\allowdisplaybreaks                % seitenübergreifende Rechnungen
+\allowdisplaybreaks{}               % seitenübergreifende Rechnungen
 \usepackage{bm}                    % math bold font
-\usepackage{wasysym}               % noch mehr Symbole
+%\usepackage{wasysym}               % noch mehr Symbole
 \usepackage{siunitx}
 \sisetup{output-decimal-marker = {,}} % Kommas als Dezimalteiler
 \DeclareSIUnit\barn{b}
@@ -73,7 +73,7 @@
 \usepackage[bottom=3cm, left=2.5cm, right=2cm]{geometry}
 \RequirePackage[headsepline]{scrlayer-scrpage} % edit header and footer of a page, for more lines add [headtopline, headsepline, footsepline, footbotline]
 \pagestyle{scrheadings} % set formatting to scrheadings
-\clearpairofpagestyles
+\clearpairofpagestyles{}
 \setkomafont{pageheadfoot}{}
 
 % ===========================================================
@@ -154,7 +154,7 @@ backref=false]{hyperref}
 \DeclarePairedDelimiter{\Floor}{\lfloor}{\rfloor}    % aufrunden
 \DeclarePairedDelimiter{\Norm}{\lVert}{\rVert}       % Norm
 \DeclarePairedDelimiter{\sprod}{\langle}{\rangle}    % spitze Klammern
-\DeclarePairedDelimiter{\enbrace}{(}{)}              % runde Klammern
+%\DeclarePairedDelimiter{\enbrace}{(}{)}              % runde Klammern
 \DeclarePairedDelimiter{\benbrace}{\lbrack}{\rbrack} % eckige Klammern
 \DeclarePairedDelimiter{\penbrace}{\{}{\}}           % geschweifte Klammern
 \newcommand{\Underbrace}[2]{{\underbrace{#1}_{#2}}}  % bessere Unterklammerungen
