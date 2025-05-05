@@ -41,7 +41,7 @@ Die Aufspaltung der Energieniveaus und möglichen Übergänge für die verschied
 %--
 sind in \cref{fig:cd_niveaus} dargestellt.
 %--
-\vspace{0.3cm}\\
+%\clearpage
 Die Polarisation der Strahlung hängt von der Änderung der magnetischen Quantenzahl $M_J$ im Übergang ab (siehe \cref{fig:polarisation}):
 %--
 \begin{itemize}
@@ -143,17 +143,17 @@ Um longitudinale und transversale Konfigurationen zu untersuchen wird die Halter
     \caption[Longitudinale und Transversale Konfiguration Zeemann-Effekt]{Aufbau zur Messung in transversaler Konfiguration (oben) und longitudinaler Konfiguration (unten) von oben betrachtet mit (i) Viertel-Wellenlängen-Platte und (k) Polarisationsfilter~\cite{LD}.}\label{fig:aufbau_zeemann_above}
 \end{figure}
 %--
-\noindent Zur Beobachtung der jeweiligen Komponenten werden die Polarisationsfilter und die Viertelwellenlängenplatte in den Strahlengang eingebaut.\\
+\noindent Zur Beobachtung der jeweiligen Komponenten werden die Polarisationsfilter und die Viertelwellenlängenplatte in den Strahlengang eingebaut.
 %
 %--
 %
 \subsection{Transversale Konfiguration}
 %--
 \begin{figure}[ht]
-    \begin{center}
-        \subcaptionbox{\texttt{Zeemann}-Aufspaltung in transversaler Konfiguration (A) ohne Magnetfeld, (B) mit Magnetfeld, (C) mit Polarisationsfilter auf $0^{\circ}$ und (D) mit Polarisationsfilter auf $90^{\circ}$. Für das Magnetfeld wurde der Strom jeweils auf $\SI{6,9}{\ampere}$ eingestellt}{\includegraphics[width=0.49\textwidth]{Transversal.png}}\label{fig:trans_all}
-        \subcaptionbox{Einstellung des Stroms auf $\SI{4,7}{\ampere}$ bis die aufgespalteten Linien ohne Filter gerade unterschieden werden können}{\includegraphics[width=0.49\textwidth]{Trans_Strom.png}}\label{fig:trans_strom}
-    \end{center}
+    \centering
+    \subcaptionbox{\texttt{Zeemann}-Aufspaltung in transversaler Konfiguration (A) ohne Magnetfeld, (B) mit Magnetfeld, (C) mit Polarisationsfilter auf $0^{\circ}$ und (D) mit Polarisationsfilter auf $90^{\circ}$. Für das Magnetfeld wurde der Strom jeweils auf $\SI{6,9}{\ampere}$ eingestellt\label{fig:trans_all}}{\includegraphics[width=0.45\textwidth]{Transversal.png}}
+    \subcaptionbox{Einstellung des Stroms auf $\SI{4,7}{\ampere}$ bis die aufgespalteten Linien ohne Filter gerade unterschieden werden können\label{fig:trans_strom}}{\includegraphics[width=0.45\textwidth]{Trans_Strom.png}}
+    \caption{Beobachteter \texttt{Zeemann}-Effekt in transversaler Konfiguration.}
 \end{figure}
 %--
 \clearpage
@@ -172,8 +172,16 @@ Die intensität der Komponenten variiert im Verlauf der Messung, insbesondere im
 \subsection{Longitudinale Konfiguration}
 %--
 \begin{figure}[ht]
-    \begin{center}
-        \subcaptionbox{\texttt{Zeemann}-Aufspaltung in longitudinaler Konfiguration (A) ohne Magnetfeld, (B) mit Magnetfeld, (C) mit Viertel-Wellenlänge-Platte auf $0^{\circ}$ und Polarisationsfilter auf $-45^{\circ}$ und (D) mit Viertel-Wellenlänge-Platte auf $0^{\circ}$ und mit Polarisationsfilter auf $+45^{\circ}$. Für das Magnetfeld wurde der Strom jeweils auf $\SI{2,5}{\ampere}$ eingestellt}{\includegraphics[width=0.49\textwidth]{Longitudinal.png}}\label{fig:long_all}
-        \subcaptionbox{Einstellung des Stroms auf $\SI{1,7}{\ampere}$ bis die aufgespalteten Linien ohne Filter gerade unterschieden werden können}{\includegraphics[width=0.49\textwidth]{Long_Strom.png}}\label{fig:long_strom}
-    \end{center}
+    \centering
+    \subcaptionbox{\texttt{Zeemann}-Aufspaltung in longitudinaler Konfiguration (A) ohne Magnetfeld, (B) mit Magnetfeld, (C) mit Viertel-Wellenlänge-Platte auf $0^{\circ}$ und Polarisationsfilter auf $-45^{\circ}$ und (D) mit Viertel-Wellenlänge-Platte auf $0^{\circ}$ und mit Polarisationsfilter auf $+45^{\circ}$. Für das Magnetfeld wurde der Strom jeweils auf $\SI{2,5}{\ampere}$ eingestellt\label{fig:long_all}}{\includegraphics[width=0.45\textwidth]{Longitudinal.png}}
+    \subcaptionbox{Einstellung des Stroms auf $\SI{1,7}{\ampere}$ bis die aufgespalteten Linien ohne Filter gerade unterschieden werden können\label{fig:long_strom}}{\includegraphics[width=0.45\textwidth]{Long_Strom.png}}
+    \caption{Beobachteter \texttt{Zeemann}-Effekt in longitudinaler Konfiguration.}
 \end{figure}
+%--
+\noindent Bei ausgeschaltetem Magnetfeld (\cref{fig:long_all} (A)) sind wieder die konzentrischen Interferenzringe sichtbar.
+\vspace{0.2cm}\\
+\noindent Erhöht man nun den Magnetstrom auf $\SI{2,5}{\ampere}$ (\cref{fig:long_all} (B)), so erfolgt eine Aufspaltung der Spektrallinie in die $\sigma^\pm$-Komponenten, die sich radial verschieben. Bei dieser Konfiguration ist die $\pi$-Komponente nicht sichtbar, da sie in der Richtung des Magnetfeldes polarisiert ist.
+\vspace{0.2cm}\\
+\noindent Bei Verwendung der Viertelwellenlängenplatte auf $0^{\circ}$, welche das zirkular polarisierte Licht in linear polarisiertes Licht umwandelt, und des Polarisationsfilters auf $-45^{\circ}$ (\cref{fig:long_all} (C)) werden die $\sigma^+$-Komponente sichtbar und die $\sigma^-$-Komponente herausgefiltert. Dies erfolgt, indem durch die Viertelwellenlängenplatte der zur Plattenachse parallel polarisierten Anteil der $\sigma^+$-Komponente um $90^{\circ}$ gedreht wird.
+\vspace{0.2cm}\\
+\noindent Wird der Polarisationsfilter nun auf $+45^{\circ}$ eingestellt (\cref{fig:long_all} (D)), so wird die $\sigma^-$-Komponente sichtbar und die $\sigma^+$-Komponente herausgefiltert.\\
