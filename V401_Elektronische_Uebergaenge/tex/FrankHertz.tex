@@ -1,9 +1,5 @@
 \chapter{Franck-Hertz-Versuch}
 
-<<<<<<< HEAD
-\section{Aufbau}
-% ---------------------------------------------------------------------------------------------
-=======
 
 \section{Theoretischer Hintergrund}
 Der Franck-Hertz-Versuch, erstmals 1914 von James Franck und Gustav Hertz durchgeführt, lieferte den ersten direkten experimentellen Nachweis für quantisierte Energieniveaus in Atomen. Er bestätigte die entstehende Quantentheorie, indem er zeigte, dass Elektronen nur diskrete Energiemengen an Atome übertragen können, um diese in angeregte Zustände zu versetzen.
@@ -43,7 +39,12 @@ mit $k_B$ als Boltzmann-Konstante, $T$ der Temperatur, $d$ dem Atomdurchmesser u
 Die Gegenspannung $U_G$ wirkt als Filter für langsame Elektronen. Eine Erhöhung von $U_G$ reduziert den gemessenen Strom, verändert jedoch nicht die Lage der Maxima.
 \vspace{0.3cm}\\
 Der Franck-Hertz-Versuch stellt einen Meilenstein der Atomphysik dar. Er zeigte experimentell, dass Energieübertragungen zwischen Elektronen und Atomen in diskreten Beträgen erfolgen und bestätigte die Annahmen des Bohrschen Atommodells.
-
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
 \section{Aufbau}
 
 \begin{figure}[H]
@@ -63,8 +64,26 @@ Die gesamte Apparatur wird über eine externe Steuereinheit betrieben, die das a
 \vspace{0.3cm}\\
 % ----------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
 
->>>>>>> ppg
-\subsection{Subsection}
-% ---------------------------------------------------------------------------------------------
-\subsubsection{Subsubsection}
+\section{Durchführung}
+
+Zu Beginn des Experiments wird der Franck-Hertz-Ofen auf etwa \SI{165}{\celsius} aufgeheizt und thermisch stabilisiert, um während der Messung einen konstanten Quecksilberdampfdruck sicherzustellen. Zwei Messmodule (Cassy-Einheiten) zur Erfassung von Spannung und Strom werden mit den Anschlüssen der Ofeneinheit verbunden. Diese Module sind wiederum mit einem Computer verbunden, auf dem die Cassy Lab Software ausgeführt wird. In der Software wird die vorkonfigurierte Datei \textit{"Franck Hertz"} geladen, welche die Datenaufnahme und die Gerätesteuerung übernimmt.
+\vspace{0.3cm}\\
+Sobald das System im Gleichgewichtszustand ist, wird die Messung durch Drücken der Schaltfläche \textit{"Messung starten"} (F9) in der Softwareoberfläche gestartet. Dieser Schritt aktiviert die Datenerfassung. Anschließend wird der \textit{"Start/Stop"}-Knopf an der Hardware-Steuereinheit des Ofens gedrückt. Dadurch wird die automatische Rampe der Beschleunigungsspannung $U_B$ von \SI{0}{\volt} bis zu einem vorher festgelegten Maximalwert ausgelöst. Während dieses Spannungshubs werden Elektronen aus der beheizten Kathode emittiert, durch den Quecksilberdampf beschleunigt und erreichen entweder die Anode oder werden - abhängig von ihrer kinetischen Energie nach einem Stoß und der angelegten Gegenspannung $U_G$ - zurückgehalten. Der Anodenstrom $I_A$ wird kontinuierlich als Funktion von $U_B$ gemessen und aufgezeichnet und liefert so eine direkte Darstellung der Energieverluste der Elektronen durch Stoßprozesse im Dampf.
+\vspace{0.3cm}\\
+Es werden zwei getrennte Messreihen durchgeführt, um den Einfluss experimenteller Parameter zu untersuchen. Zunächst werden $I_A(U_B)$-Kurven für vier verschiedene Werte der Gegenspannung $U_G$ (typischerweise im Bereich von \SIrange{2}{4}{\volt}) bei konstanter Ofentemperatur aufgenommen. Danach wird das Experiment bei vier verschiedenen Temperaturen (typischerweise zwischen \SI{165}{\celsius} und \SI{180}{\celsius}) mit einer festen Gegenspannung wiederholt. Jede Messung sollte eine Anodenstromkurve liefern, die mindestens vier ausgeprägte Maxima zeigt, welche auf aufeinanderfolgende inelastische Anregungen von Quecksilberatomen durch die einfallenden Elektronen zurückzuführen sind.
+\vspace{0.3cm}\\
+Während der Datenerfassung ist darauf zu achten, Anzeichen für einen elektrischen Durchbruch in der Röhre zu erkennen. Ein plötzlicher Anstieg des Anodenstroms oder ein bläuliches Leuchten in der Röhre weist auf Ionisation oder Gasdurchschlag hin. Tritt ein solcher Zustand auf, muss die Messung sofort durch Drücken des \textit{Start/Stop}-Knopfs beendet werden. Der Maximalwert der Beschleunigungsspannung $U_B$ ist anschließend zu reduzieren (typischerweise auf unter \SI{45}{\volt}), um einen erneuten Durchbruch zu vermeiden. Die Messung kann dann mit angepassten Parametern wiederholt werden.
+\vspace{0.3cm}\\
+Alle Datensätze sollten unmittelbar nach der Aufnahme gespeichert werden, wobei die Dateinamen die jeweiligen experimentellen Bedingungen ($U_G$ und Temperatur) eindeutig widerspiegeln. Diese Datensätze bilden die Grundlage für die weitere quantitative Auswertung der Anregungsenergie und des Einflusses experimenteller Parameter auf das charakteristische Strom-Spannungs-Verhalten der mit Quecksilber gefüllten Franck-Hertz-Röhre.
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------
+\section{Auswertung}
