@@ -70,7 +70,9 @@ ngerman         % Option für deutsche Sprache
 \include{ZeemannEffekt}
 \include{FrankHertz}
 \include{table}
-\listoffigures
-\listoftables
-\printbibliography{}
+\appendix
+\printbibliography{heading=bibintoc, title={Literaturverzeichnis}}
+\listoffigures\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoftables\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\include{Anhang}
 \end{document}

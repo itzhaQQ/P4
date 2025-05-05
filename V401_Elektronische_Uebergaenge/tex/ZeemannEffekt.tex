@@ -185,3 +185,79 @@ Die intensität der Komponenten variiert im Verlauf der Messung, insbesondere im
 \noindent Bei Verwendung der Viertelwellenlängenplatte auf $0^{\circ}$, welche das zirkular polarisierte Licht in linear polarisiertes Licht umwandelt, und des Polarisationsfilters auf $-45^{\circ}$ (\cref{fig:long_all} (C)) werden die $\sigma^+$-Komponente sichtbar und die $\sigma^-$-Komponente herausgefiltert. Dies erfolgt, indem durch die Viertelwellenlängenplatte der zur Plattenachse parallel polarisierten Anteil der $\sigma^+$-Komponente um $90^{\circ}$ gedreht wird.
 \vspace{0.2cm}\\
 \noindent Wird der Polarisationsfilter nun auf $+45^{\circ}$ eingestellt (\cref{fig:long_all} (D)), so wird die $\sigma^-$-Komponente sichtbar und die $\sigma^+$-Komponente herausgefiltert.\\
+\newpage
+\section{Messung der Aufspaltung}
+%--
+Um die betrachtete Aufspaltung quantitativ zu untersuchen, wird das Okular durch eine \texttt{CCD}-Kamera ersetzt und mit einer \texttt{Hall}-Sonde die magnetische Feldstärke gemessen.
+%
+%--
+%
+\subsection{Kalibrierung des Magnetfeldes}
+%--
+Vor und nach der Messung wird die Abhängigkeit der magn. Feldstärke vom durch die Spulen fließenden Strom bestimmt. Hierfür wird eine \texttt{Hall}-Sonde auf einem optischen Reiter befestigt und mittig zwischen den Polschuhen anstelle der Cd-Lampe platziert. Dann wird die Messung gestartet und in regelmäßigen Abständen der Strom erhöht (bis $I_{\text{max}}\approx \SI{10}{\ampere}$). Die Messfehler folgen aus~\cite{LD} mit $\Delta I = \SI{1.5}{\percent}$ für den Strom und $\Delta B = \SI{2}{\percent} + \SI{0.5}{\percent}\cdot B_{\text{max}}$ wobei $B_{\text{max}}$ der Bereichsendwert ist.\\
+Zur Modellierung der Daten wird ein Polynome 3. Grades\footnote{Polynome 2. Grades reichen meist um leichte Nichtlinearitäten zu modellieren, jedoch kann ein weiterer Grad hilfreich sein, um mögliche Sättigung des Eisenkerns und damit Abflachung der Stromkurve zu berücksichtigen} verwendet, um bei gegebenem Spulenstrom die magn. Flussdichte zu berechnen:
+\begin{equation*}
+    f(x) = ax^3 + bx^2+xc+d
+\end{equation*}
+Dieses wird nun mit Hilfe von \texttt{curve\_fit} an die Datensätze angepasst (\cref{fig:magnetfeldkali_ges}). Die Kalibration erfolgt durch Mitteln der Anpassungsfunktionen zu einer \textit{Gesamtanpassungs}kurve.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{plots/zeeman_pltKalibrierung_gesamt.png}
+    \caption{Messdaten der magnetische Flussdichte $B$ gegen den Spulenstrom $I$ mit einer Anpassungsfunktion $ f(x)=ax^3+bx^2+cx+d $. Die Gesamtanpassung erfolgt durch Mitteln beider Anpassungskurven.}\label{fig:magnetfeldkali_ges}
+\end{figure}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{
+        l|
+        S[table-format=2.3(3)]
+        S[table-format=1.3(4)]
+        S[table-format=2.3(4)]
+        S[table-format=1.3(4)]
+    }
+    \toprule
+    \multicolumn{1}{l|}{} & 
+    \multicolumn{1}{c}{$a$ [T]} & 
+    \multicolumn{1}{c}{$b$ [T/A]} & 
+    \multicolumn{1}{c}{$c$ [T/A$^2$]} & 
+    \multicolumn{1}{c}{$d$ [T/A$^3$]} \\
+    \midrule
+    Kalibrierung 1 & -0.298 \pm 0.094 & 2.09 \pm 1.27 & 60.78 \pm 4.21 & 0.93 \pm 2.70 \\
+    Kalibrierung 2 & -0.297 \pm 0.102 & 1.62 \pm 1.35 & 65.45 \pm 4.36 & 0.10 \pm 2.74 \\
+    \midrule
+    Gesamtanpassung & -0.297 \pm 0.098 & 1.86 \pm 1.31 & 63.11 \pm 4.29 & 0.51 \pm 2.72 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Anpassungsparameter der Magnetfeld-Kalibrierungen}\label{tab:kalibrierung}
+\end{table}
+Man erkennt, dass die Messpunkte der zweiten Kalibrierungskurve etwas höher liegen, jedoch unterscheiden sich beide Messpunkte insgesamt nur sehr leicht und ihre Fehlerbalken überlappen.\footnote{Kleinere Schwankungen zwischen den Messungen sind durch leicht verschobene Positionen der \texttt{Hall}-Sonde zu erklären}
+%
+%--
+%
+\newpage
+\subsection{Bestimmung der Peakschwerpunkte}
+%--
+Die \texttt{Hall}-Sonde wird nun aus dem Aufbau entfernt und die Cd-Lampe wieder eingesetzt.\\
+Gemessen wird die Intensität der Interferenzringe entlang einer Achse (als Pixelkoordinate).
+Diese Pixelkoordinate wird zum späteren Auftragen zunächst in einen Winkel $\alpha$ umgeformt mit:
+%--
+\begin{equation*}
+    \alpha = \frac{\Delta p \cdot s}{f}
+\end{equation*}
+%--
+wobei $\Delta p$ den Abstand zwischen zwei Ringen (in Pixel), $s=\SI{9.6e-6}{\meter}$ die Pixelgröße und $f=\SI{150}{\milli\meter}$ Die Brennweite der Abbildungslinse entsprechen.\\
+Die Abbildungslinse ist so einzustellen, dass die Peaks der beobachteten Kurve scharf sind und die maximale Intensität haben. Dann wird das Etalon so gekippt, bis das Zentrum des Ringsystems auf die CCD-Zeile abgebildet wird, keine weiteren Peaks mehr hervorquellen und der Mittelpunkt der ersten beiden Peaks mittig auf der Messkala ist.\\
+Zunächst erfolgt eine Messung ohne Magnetfeld, anschließend jeweils eine Messung ab $I=\SI{1.0}{\ampere}$ in $\SI{1.0}{\ampere}$-Schritten bis $I_{\text{max}}=\SI{10,0}{\ampere}$\\
+Beispielhaft werden im folgenden die Messungen für $I = \SI{10,0}{\ampere}$ aufgeführt (\cref{fig:messung_10A} und \cref{fig:peak_10A}), wobei eine aufgespaltene Linie für die Auswertung genauer betrachtet wird. Hierfür wurde die dem Zentrum zur linken nächsten Linie im Bereich $\alpha \in \left[\SI{1.5}{\degree}\; ,\;\SI{1.8}{\degree}\right]$ gewählt.
+%--
+\begin{figure}[ht]
+    \subcaptionbox{Messung der \texttt{CCD}-Kamera für einen Strom von \\$I = \SI{10,0}{\ampere}$. Zur besseren Verdeutlichung wurden die Messpunkte zusätzlich miteinander verbunden.\label{fig:messung_10A}}{\includegraphics[width=.5\textwidth]{plots/ZeemanX_10A.png}}
+    %\subcaptionbox{Messung der \texttt{CCD}-Kamera ohne Magnetfeld. Zur besseren Verdeutlichung wurden die Messpunkte zusätzlich miteinander verbunden.}{\includegraphics[width=.5\textwidth]{plots/ZeemanX_ohne_B.png}}
+    \subcaptionbox{Vergrößerte der \texttt{CCD}-Kamera für einen Strom von \\$I = \SI{10,0}{\ampere}$. \label{fig:peak_10A}}{\includegraphics[width=.5\textwidth]{plots/peak_10A.png}}
+\end{figure}
+%--
+
+\noindent Das Signal kann durch eine Summe dreier \texttt{Gauss}-Funktionen modelliert werden. Zusätzlich wird eine lineare Funktion zur Modellierung der nach außen abfallenden Intensität verwendet, sodass folgt:
+\begin{equation*}
+    f(x) = a + bx + \sum^{3}_{i=1} \frac{A_i}{\sigma_i\sqrt{2\pi}}\exp{-\frac{(x-\mu_i)^2}{2\sigma_i^2}}
+\end{equation*}
+Dies wird mit Hilfe des Python-Pakets \texttt{lmfit} an die Daten für alle 10 Aufnahmen bei verschiedenen Spulenströmen durchgeführt.\footnote{Hier sollte zunächst der Strom langsam erhöht werden bis die Spektrallinien voneinander getrennt sind, um einen sinnvollen Messbereich wählen zu können (ab dem Start der Aufspaltung in 10 Intervallschritten). Dies wurde falsch verstanden, weswegen die ersten Messwerte keine Aufspaltung der Spektrallinien aufzeigen (erst sichtbar bei einem Strom von $I=\SI{5,6}{\ampere}$). Im weiteren Verlauf der Auswertung werden nur die Messwerte mit einem Strom ab $I = \SI{6}{\ampere}$ verwendet.}
