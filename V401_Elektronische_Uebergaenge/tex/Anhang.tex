@@ -32,6 +32,64 @@
     \caption{Mit der \texttt{CCD}-Kamera aufgenommene Intensitätsverläufe im Bereich \\$\alpha \in \left[\SI{1.5}{\degree}\; , \; \SI{1.8}{\degree}\right]$}\label{fig:peaks_all_b}
 \end{figure}
 
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+\clearpage
+\subsection{Franck-Hertz}
+\begin{figure}[!ht]
+    \centering
+    % first row: U1 & U2
+    \subcaptionbox{$U_G$ = $\SI{2}{\volt}$ bei $\SI{165}{\celsius}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/UG2.png}%
+    }
+    \subcaptionbox{$U_G$ = $\SI{2.5}{\volt}$ bei $\SI{165}{\celsius}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/UG2_5.png}%
+    }
+  
+    \medskip
+    % second row: U3 & U4
+    \subcaptionbox{$U_G$ = $\SI{3}{\volt}$ bei $\SI{165}{\celsius}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/UG3.png}%
+    }
+    \subcaptionbox{$U_G$ = $\SI{3.5}{\volt}$ bei $\SI{165}{\celsius}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/UG3_5.png}%
+    }
+  
+    \medskip
+    % third row: U5 & U6
+    \subcaptionbox{$U_G$ = $\SI{4}{\volt}$ bei $\SI{165}{\celsius}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/UG4.png}%
+    }
+
+  \caption{Anodenspannungskurven in Abhängigkeit der Gegenspannung bei konstanter Temperatur von $T$ = $\SI{165}{\celsius}$.}
+    \label{fig:UGall}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    % first row: U1 & U2
+    \subcaptionbox{$T$ = $\SI{165}{\celsius}$ bei $\SI{3}{\volt}$  }{%
+      \includegraphics[width=0.48\textwidth]{plots/T165.png}%
+    }
+    \subcaptionbox{$T$ = $\SI{170}{\celsius}$ bei $\SI{3}{\volt}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/T170.png}%
+    }
+  
+    \medskip
+    % second row: U3 & U4
+    \subcaptionbox{$T$ = $\SI{175}{\celsius}$ bei $\SI{3}{\volt}$}{%
+      \includegraphics[width=0.48\textwidth]{plots/T175.png}%
+    }
+    \subcaptionbox{$T$ = $\SI{180}{\celsius}$ bei $\SI{3}{\volt}$ }{%
+      \includegraphics[width=0.48\textwidth]{plots/T180.png}%
+    }
+
+  \caption{Anodenspannungskurven in Abhängigkeit der Temperatur bei konstanter Gegenspannung von $U_G$ = $\SI{3}{\volt}$.}
+    \label{fig:Tall}
+\end{figure}
+
+
 \clearpage
 \section{Tabellen}
 \subsection{Zeemann-Effekt}
@@ -78,3 +136,55 @@
     \caption[Anpassungsparameter zur Messreihe \textsc{Zeeman}-Effekt]{Anpassungsparameter der Gaußkurven aus der Messreihe zum \textsc{Zeeman}-Effekt. Die dazugehörigen Abbildungen sind \crefrange{fig:peaks_all_a}{fig:peaks_all_b} zu finden.}\label{tab:langzeeman-fit}
 \end{table}
 \normalsize
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+\subsection{Franck-Hertz}
+\begin{table}[h!]
+    \centering
+    \sisetup{uncertainty-mode=separate}
+    \begin{tabular}{
+      l|
+      S[table-format=1.3(3)]
+      S[table-format=1.3(3)]
+    }
+    \toprule
+    \multicolumn{1}{c|}{$U_G$ [V] (bei Temperatur = $\SI{165}{\degreeCelsius}$)} &
+    \multicolumn{1}{c}{$\Delta E$ [eV]} &
+    \multicolumn{1}{c}{$\sigma$ [V]} \\
+    \midrule
+    2.0 & 4.830 \pm 0.183 & 0.817 \pm 0.328 \\
+    2.5 & 4.810 \pm 0.220 & 0.921 \pm 0.107 \\
+    3.0 & 4.830 \pm 0.320 & 0.903 \pm 0.085 \\
+    3.5 & 4.840 \pm 0.260 & 0.862 \pm 0.082 \\
+    4.0 & 4.850 \pm 0.207 & 0.635 \pm 0.300 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Gemittelte $\Delta E$ und Breite der angepassten Gaußkurven für jede Gegenspannung}
+    \label{tab:franckU2}
+  \end{table}
+  \vspace{1em}
+  \begin{table}[h!]
+    \centering
+    \sisetup{uncertainty-mode=separate}
+    \begin{tabular}{
+      l|
+      S[table-format=1.3(3)]
+      S[table-format=1.3(3)]
+    }
+    \toprule
+    \multicolumn{1}{c|}{Temperatur [\si{\degreeCelsius}] (bei $U_G$ = $3 \si{\volt}$)} &
+    \multicolumn{1}{c}{$\Delta E$ [eV]} &
+    \multicolumn{1}{c}{$\sigma$ [V]} \\
+    \midrule
+    165 & 4.840 \pm 0.193 & 0.911 \pm 0.074 \\
+    170 & 4.830 \pm 0.183 & 0.917 \pm 0.065 \\
+    175 & 4.800 \pm 0.158 & 0.927 \pm 0.061 \\
+    180 & 4.810 \pm 0.037 & 0.900 \pm 0.080 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Gemittelte $\Delta E$ und Breite der angepassten Gaußkurven für jede Temperatur}
+    \label{tab:franckT}
+  \end{table}
+  
+  

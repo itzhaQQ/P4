@@ -86,4 +86,26 @@ Alle Datensätze sollten unmittelbar nach der Aufnahme gespeichert werden, wobei
 % ----------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------
 \section{Auswertung}
-%\input{tabelle2/franckT}
+
+
+\subsection*{Bestimmung der Anregungsenergie $\Delta E$ von Quecksilber}
+
+Zur Bestimmung der Anregungsenergie des Quecksilberatoms wurde der Anodenstrom $I_A$ als Funktion der Beschleunigungsspannung $U_B$ für verschiedene Einstellungen aufgenommen. Die erhaltenen Franck-Hertz-Kurven zeigen eine Reihe periodischer Maxima, die jeweils dem Zustand entsprechen, in dem die Elektronen genügend kinetische Energie erworben haben, um ein Quecksilberatom durch inelastische Stöße anzuregen. Durch Bestimmen der Positionen mindestens fünf aufeinanderfolgender Maxima in den gemessenen $I_A(U_B)$-Kurven lässt sich der Spannungsabstand $\Delta U$ zwischen den Peaks ermitteln. Dieser Abstand spiegelt direkt die zur Anregung des Atoms vom Grundzustand in den ersten angeregten Zustand benötigte Energie wider. Die Anregungsenergie ist $\Delta E$. 
+\vspace{0.3cm}\\
+In diesem Experiment wurde ein mittlerer Spannungsabstand von etwa $\Delta U = [\text{Ergebnis einsetzen}]\,\mathrm{V}$ gefunden, woraus sich eine Anregungsenergie von $\Delta E \approx [\text{Ergebnis einsetzen}]\,\mathrm{eV}$ ergibt. Dieser Wert liegt im guten Einklang mit der bekannten Anregungsenergie des Übergangs $6^1S_0 \to 6^3P_1$ im Quecksilberatom, welcher bei etwa $4{,}9\,\mathrm{eV}$ liegt.
+\vspace{0.3cm}\\
+Die Spannungsunsicherheiten wurden auf $\pm 2\%$ des Messbereichs und zusätzlich auf $\pm 0{,}5\%$ des maximal gemessenen Werts geschätzt, in Übereinstimmung mit den Spezifikationen des Cassy-Moduls. Zur Bestimmung von $\Delta E$ wurden die fünf höchsten Maxima jeder Anodenspannungskurve mit einer einzelnen Gaußfunktion angepasst:
+\vspace{0.3cm}\\
+\begin{equation}
+  U_A = O + A \exp\!\biggl[-\frac{(U_B - \mu)^2}{2\,\sigma^2}\biggr],
+\end{equation}
+\vspace{0.3cm}\\
+wobei $O$ der Offset, $A$ die Amplitude, $\mu$ die Peakposition und $\sigma$ die Standardabweichung des Peaks ist. Die Anregungsenergie ergibt sich dann aus
+\vspace{0.3cm}\\
+\begin{equation}
+  \Delta E = e \,\Delta U_B,
+\end{equation}
+\vspace{0.3cm}\\
+wobei $\Delta U_B$ die Differenz der mittels $\mu$ bestimmten Peakpositionen ist. Tabelle 3 fasst die mittleren Werte von $\Delta E$ sowie die entsprechenden Breiten $\sigma$ zusammen.
+
+
