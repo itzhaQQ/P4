@@ -23,7 +23,7 @@ Da jedoch $S=0$ fallen einige Terme weg. Die guten Quantenzahlen, also die, die 
 Energiekorrektur zum Hamiltonian ist:
 %--
 \begin{equation}
-    \Delta E = \mu_B g_J M_J B
+    \Delta E = \mu_B g_J M_J B \label{equ:energieversch}
 \end{equation}
 %--
 mit dem Bohrschen Magneton $\mu_B = \frac{e\hbar}{2m}$ und dem Landé-Faktor $g_J$:
@@ -103,7 +103,7 @@ Das \texttt{Fabry-Pérot}-Etalon (\cref{fig:fabry_perot}) ist ein Interferometer
 \noindent Die Bedingung für konstruktive Interferenz ergibt sich aus dem optischen Wegunterschied zwischen den reflektierten Teilstrahlen:
 %--
 \begin{equation}
-    2nd \cos(\alpha) = m \lambda
+    2nd \cos(\alpha) = m \lambda \label{equ:fabry_perot}
 \end{equation}
 %--
 wobei $n$ der Brechungsindex des Mediums zwischen den Platten, $d$ der Abstand der Platten, $m \in \mathbb{Z}$ die Interferenzrdnung und $\lambda$ die Wellenlänge des Lichts ist.\\
@@ -192,7 +192,7 @@ Um die betrachtete Aufspaltung quantitativ zu untersuchen, wird das Okular durch
 %
 %--
 %
-\subsection{Kalibrierung des Magnetfeldes}
+\subsection{Kalibrierung des Magnetfeldes}\label{sec:kal_magnetfled}
 %--
 Vor und nach der Messung wird die Abhängigkeit der magn. Feldstärke vom durch die Spulen fließenden Strom bestimmt. Hierfür wird eine \texttt{Hall}-Sonde auf einem optischen Reiter befestigt und mittig zwischen den Polschuhen anstelle der Cd-Lampe platziert. Dann wird die Messung gestartet und in regelmäßigen Abständen der Strom erhöht (bis $I_{\text{max}}\approx \SI{10}{\ampere}$). Die Messfehler folgen aus~\cite{LD} mit $\Delta I = \SI{1.5}{\percent}$ für den Strom und $\Delta B = \SI{2}{\percent} + \SI{0.5}{\percent}\cdot B_{\text{max}}$ wobei $B_{\text{max}}$ der Bereichsendwert ist.\\
 Zur Modellierung der Daten wird ein Polynome 3. Grades\footnote{Polynome 2. Grades reichen meist um leichte Nichtlinearitäten zu modellieren, jedoch kann ein weiterer Grad hilfreich sein, um mögliche Sättigung des Eisenkerns und damit Abflachung der Stromkurve zu berücksichtigen} verwendet, um bei gegebenem Spulenstrom die magn. Flussdichte zu berechnen:
@@ -260,4 +260,231 @@ Beispielhaft werden im folgenden die Messungen für $I = \SI{10,0}{\ampere}$ auf
 \begin{equation*}
     f(x) = a + bx + \sum^{3}_{i=1} \frac{A_i}{\sigma_i\sqrt{2\pi}}\exp{-\frac{(x-\mu_i)^2}{2\sigma_i^2}}
 \end{equation*}
+\newpage
 Dies wird mit Hilfe des Python-Pakets \texttt{lmfit} an die Daten für alle 10 Aufnahmen bei verschiedenen Spulenströmen durchgeführt.\footnote{Hier sollte zunächst der Strom langsam erhöht werden bis die Spektrallinien voneinander getrennt sind, um einen sinnvollen Messbereich wählen zu können (ab dem Start der Aufspaltung in 10 Intervallschritten). Dies wurde falsch verstanden, weswegen die ersten Messwerte keine Aufspaltung der Spektrallinien aufzeigen (erst sichtbar bei einem Strom von $I=\SI{5,6}{\ampere}$). Im weiteren Verlauf der Auswertung werden nur die Messwerte mit einem Strom ab $I = \SI{6}{\ampere}$ verwendet.}
+Die Ergebnisse dieser Anpassung sind in \cref{tab:langzeeman-fit} einzusehen. Die Anpassungsgüten $\chi_{\text{red}}^2$ liegen zwischen $0,67$ und $0,86$ was für eine akzeptable Anpassung spricht. Dies kann man auch in \crefrange{fig:peaks_all_a}{fig:peaks_all_b} erkennen.\\
+Die Peakschwerpunkte $\mu_i$ ($i = \{1,2,3\}$) entsprechen den Beugungswinkeln für die verschiedenen Linien und werden wie folgt definiert:
+\begin{align*}
+    \mu_1 &= \alpha_{\sigma^-}, & \mu_2 &= \alpha_{\pi}, & \mu_3 &= \alpha_{\sigma^+}
+\end{align*} 
+Die Spulenströme werden mit Hilfe der Magnetfeldkalibrierung in magnetische Flussdichten umgerechnet (\cref{tab:spulenstroeme})
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{
+        S[table-format=1]
+        S[table-format=2.3(3)]
+        S[table-format=1.3(4)]
+    }
+    \toprule
+    \multicolumn{1}{c}{Messungs-Nr.} & 
+    \multicolumn{1}{c}{Spulenstrom [A]} & 
+    \multicolumn{1}{c}{Magn. Flussdichte [T]} \\
+    \midrule
+    1 & 1.0 \pm 0.015 & 65.18 \pm 1.31 \\
+    2 & 2.0 \pm 0.030 & 131.78 \pm 2.64 \\
+    3 & 3.0 \pm 0.045 & 198.52 \pm 3.97 \\
+    4 & 4.0 \pm 0.060 & 263.61 \pm 5.28 \\
+    5 & 5.0 \pm 0.075 & 325.27 \pm 6.51 \\
+    6 & 6.0 \pm 0.090 & 381.72 \pm 7.64 \\
+    7 & 7.0 \pm 0.105 & 431.18 \pm 8.63 \\
+    8 & 8.0 \pm 0.120 & 471.85 \pm 9.44 \\
+    9 & 9.0 \pm 0.135 & 501.95 \pm 10.04 \\
+    10 & 10.0 \pm 0.150 & 519.70 \pm 10.40 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Zuordnung der Spulenströme aus der Messreihe zu den ermittelten magn. Flussdichten aus dem Modell (Abschn.~\ref{sec:kal_magnetfled})}\label{tab:spulenstroeme}
+\end{table}   
+%
+%--
+%
+\subsection{Berechnung der Energieverschiebung}
+%--
+Aus den bestimmten Positionen der aufgespalteten Linien können nun die Energieverschiebungen $\Delta E$ laut~\cite{praktikum4} ermittelt werden:
+\begin{equation}
+    \Delta E = -\frac{hc}{\lambda_{\pi}}\frac{\lambda_{\sigma^{\pm}} - \lambda_{\pi}}{\lambda_{\sigma^{\pm}}}
+            \approx -\frac{hc}{\lambda_{\pi}^0}\frac{\lambda_{\sigma^{\pm}} - \lambda_{\pi}}{\lambda_{\sigma^{\pm}}}\label{equ:deltaE_anleitung}
+\end{equation}
+Hierbei kann durch den Interferenzfilter $\lambda_{\pi}$ durch die Mittelwellenlänge des Filters $\lambda_{\pi}^0 = \SI{643.8 \pm 2}{\nano\meter}$~\cite{praktikum4} genähert werden (mit $n_{\text{Luft}}\approx 1$).
+Die Peakschwerpunkte müssen nun von Winkeleinheiten in Wellenlängen mittels der Interferenzbedingung des \texttt{Fabry-Pérot}-Etalons (\cref{equ:fabry_perot}) umgewandelt werden:
+\begin{equation*}
+    m\lambda = 2nd\cos(\beta)\quad k\in\mathbb{Z}
+\end{equation*}
+\newpage
+\noindent Nach dem \texttt{Snelliusschen} Brechungsgesetz gilt weiterhin:
+\begin{align*}
+    n_{\text{Luft}}\cdot\sin(\alpha) &= n_{\text{Etalon}}\cdot\sin(\beta)\\
+    \Rightarrow \cos(\beta) &= \sqrt{1-\frac{\sin^2(\alpha)}{n_{\text{Etalon}}}}
+\end{align*}
+Somit erhält man für die Wellenlänge:
+\begin{align}
+    \lambda &= \frac{2nd}{k}\cos(\beta) = \frac{2nd}{k}\sqrt{1-\frac{\sin^2(\alpha)}{n^2}}\label{equ:lambda}\\
+    \Rightarrow \lambda_{\sigma^{\pm}} - \lambda_{\pi} 
+        &= \frac{2nd}{k}\left(\sqrt{1-\frac{\sin^2(\alpha_{\sigma^{\pm}})}{n^2}}
+                                - \sqrt{1-\frac{\sin^2(\alpha_{\pi})}{n^2}}\right) \nonumber
+\end{align}
+und für die relative Wellenlängenverschiebung:
+\begin{align}
+    \frac{\lambda_{\sigma^{\pm}} - \lambda_{\pi}}{\lambda_{\sigma^{\pm}}} 
+            &=\frac{\frac{2nd}{k}\left(\sqrt{1-\frac{\sin^2(\alpha_{\sigma^{\pm}})}{n^2}}
+            - \sqrt{1-\frac{\sin^2(\alpha_{\pi})}{n^2}}\right)}{\frac{2nd}{k}\sqrt{1-\frac{\sin^2(\alpha_{\sigma^{\pm}})}{n^2}}}= 1-\sqrt{\frac{n^2-\sin^2(\alpha_{\pi})}{n^2-\sin^2(\alpha_{\sigma^{\pm}})}}\label{equ:rel_Wellenanderung}
+\end{align}
+Setzt man nun~\cref{equ:rel_Wellenanderung} in~\cref{equ:deltaE_anleitung} erhält man die Energieverschiebung $\Delta E_{\pm}$ der $\sigma^{\pm}$-Linien aus den Ablenkwinkeln $\alpha_{\sigma^{\pm}}$ und $\alpha_{\pi}$:
+\begin{equation}
+    \Delta E_{\pm} = \frac{hc}{\lambda_{\pi}^0}\left( 1-\sqrt{\frac{n^2-\sin^2(\alpha_{\pi})}{n^2-\sin^2(\alpha_{\sigma^{\pm}})}} \right)\label{deltaE_new}
+\end{equation}
+Die Unsicherheit $\Delta(\Delta E_{\pm})$ wird mittels \texttt{Gauss'}scher Fehöerfortpflanzung bestimmt zu:
+\begin{equation}
+    \Delta(\Delta E_{\pm}) = \frac{h c}{\lambda_{\pi}^{0}} \, \Delta E_{\pm} \cdot 
+\sqrt{
+    \left( \frac{\Delta \lambda_{\pi}^{0}}{\lambda_{\pi}^{0}} \right)^2 +
+    \left( \frac{\sin(\alpha_{\pi}) \cdot \cos(\alpha_{\pi}) \cdot \Delta \alpha_{\pi}}{n^2 - \sin^2(\alpha_{\pi})} \right)^2 +
+    \left( \frac{\sin(\alpha_{\pi}) \cdot \cos(\alpha_{\pi}) \cdot \Delta \alpha_{\sigma^{\pm}}}{n^2 - \sin^2(\alpha_{\sigma^{\pm}})} \right)^2
+}
+\end{equation}
+Man erhält die Energieaufspaltungen in~\cref{tab:delta_E}.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{
+        S[table-format=3.3(2)]
+        S[table-format=2.3(3)]
+        S[table-format=1.3(4)]
+    }
+    \toprule
+    \multicolumn{1}{c}{Magn.Flussdichte [T]} & 
+    \multicolumn{1}{c}{$\Delta E_+$[$10^{24}$ J]} & 
+    \multicolumn{1}{c}{$\Delta E_-$[$10^{24}$ J]} \\
+    \midrule
+    381.72 \pm  7.64 & 5.57 \pm 0.22 & 12.12 \pm 0.24 \\  
+    431.18 \pm  8.63 & 6.38 \pm 0.21 & 13.60 \pm 0.22 \\ 
+    471.85 \pm  9.44 & 6.80 \pm 0.18 & 14.60 \pm 0.19 \\ 
+    501.95 \pm 10.04 & 7.22 \pm 0.29 & 15.04 \pm 0.28 \\ 
+    519.70 \pm 10.40 & 6.83 \pm 0.16 & 15.54 \pm 0.21 \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Energieaufspaltungen für $\sigma^+$ und $\sigma^-$ bei verschiedenen magn. Flussdichten $B$}
+    \label{tab:delta_E}
+\end{table}  
+
+\newpage
+\subsection{Bestimmung des Bohrschen Magnetons}
+Für die Energieverschiebung gilt nach~\cref{equ:energieversch}:
+\begin{equation*}
+    \Delta E = \mu_B B M_J
+\end{equation*}
+wobei durch Einsetzen von $M_J = \pm 1$ für den ensprechenden Übergang gilt:
+\begin{equation*}
+    \Delta E = \pm \mu_B B
+\end{equation*} 
+Man erwartet also einen linearen Zusammenhang zwischen Energieverschiebung und magn. Feldstärke mit dem \texttt{Bohr}schen Magneton als Proportionalitätsfaktor. An die Daten aus \cref{tab:delta_E} wird daher jeweils eine lineare Funktion der Form:
+\begin{equation}
+    \Delta E_{\pm}(x) = \pm \mu_{B,\pm}x \label{equ:deltaE_fit}
+\end{equation}
+angepasst.
+\begin{figure}[!ht]
+    \centering
+    \subcaptionbox{Energieverschiebung aus den Peakschwerpunkten der $\sigma^+$-Linie in Abhängigkeit der Magnetfeldstärke mit Anpassungsfunktion gemäß~\cref{equ:deltaE_fit}\label{fig:deltaE_plus}}{\includegraphics[width=.49\textwidth]{plots/E_mu_sigmaplus.png}}
+    \subcaptionbox{Energieverschiebung aus den Peakschwerpunkten der $\sigma^-$-Linie in Abhängigkeit der Magnetfeldstärke mit Anpassungsfunktion gemäß~\cref{equ:deltaE_fit}\label{fig:deltaE_minus}}{\includegraphics[width=.49\textwidth]{plots/E_mu_sigmaminus.png}}
+\end{figure}
+
+\noindent Die Anpassungsfunktionen (\cref{fig:deltaE_plus} und \cref{fig:deltaE_minus}) liefern folgende experimentelle Werte für das \texttt{Bohre}sche Magneton:
+\begin{align}
+    \mu_+ &= (\num{9.73e-24}\pm\num{1.61e-12}) \si{\joule\per\tesla} \\
+    \mu_- &= (\num{24.43e-24}\pm\num{1.36e-12}) \si{\joule\per\tesla}
+\end{align}
+mit dem Varianzgewichteten Mittel:
+\begin{equation*}
+    \mu_{B,\text{exp}} = (\num{1.828e-23}\pm\num{1.472e-12})\si{\joule\per\tesla} 
+\end{equation*}
+Der Literaturwert~\cite{NIST} beträgt:
+\begin{equation*}
+    \mu_{B,\text{lit}} = \SI{9.2740100783(29)e-24}{\joule\per\tesla}
+\end{equation*}
+Der experimentell bestimmte Wert weicht stark vom Literaturwert ab und hat einen 12 Größenordnungen größeren Fehler.\\
+Während der unpassende Fehler durch Fehlerhafte Auswertung zustande gekommen sein könnte (es besteht der starke Verdacht, dass irgendwo Einheiten verwechselt wurden) hat die starke Abweichung durch die Natur des Versuchs mehrere Fehlerquellen.
+\vspace{0.2cm}
+Die Kalibration des Magnetfeld könnte (abgesehen nicht ausreichend vieler Messdaten) verfälscht werden, wenn die Hall-Sonde nicht an der gleichen Stelle zwischen den Polschuhen befand\footnote{Wobei diese Begründung ausgeschlossen wird, da die beiden Kalibrationskurven gut miteinander übereinstimmten.}\\
+Außerdem könnte es durch nicht exakt planparalleler Ausrichtung der optischen Bauteile zu Verzerrung kommen, sodass die Position der beobachteten Linien verschoben werden würden.
+\vspace{0.2cm}
+Die anschließende Modellierung der Peakschwerpunkte durch drei Gauss-Kurven entsprach auch nicht mit hinreichender Genauigkeit den Messwerte, was durch die $\chi_{\text{red}}^2$-Werte (siehe~\cref{tab:langzeeman-fit}) zu erkennen ist. Auch werden die Aufgenommenen Datenpunkte nicht gemittelt, weswegen von einer Momentanaufnahme der Spektrallinien mit entsprechenden Werten ausgegangen wird.
+%
+%--
+%
+\section{Weitergehende Überlegung}
+Im folgenden werden noch das Auflösungsvermögen sowie die Finesse des \texttt{Fabry-Pérot}-Etalons und die Doppler-Verbreiterung der Linien abgeschätzt.
+\subsection{Auflösungsvermögen und Finesse}
+Die Finesse $\mathcal{F}$ ist ein Maß für das spektrale Auflösungsvermögen und definiert durch:
+\begin{equation*}
+    \mathcal{F} = \frac{\Delta \lambda}{\delta \lambda}
+\end{equation*}
+Hierbei ist $\Delta \lambda$ durch den freien Spektralbereich und $\delta \lambda$ durch die Halbwertsbreite (Transmissionskoeffizient $T = \SI{0.5}{}$) gegeben. Ersteres beschreibt die Wellenlängendifferenz zwischen zwei Wellenlängen, die bei Einfall komplett transmittiert werden (Transmissionskoeffizient $T = \SI{1}{}$) 
+\vspace{0,2cm}
+Das Auflösungsvermögen $A$ ist ein Maß dafür, wie gut zwei verschiedene, nebeneinanderliegende Wellenlängen noch getrennt wahrgenommen werden können:
+\begin{equation*}
+    A = \frac{\lambda}{\Delta \lambda}
+\end{equation*}
+Hier ist $\Delta \lambda$ (anders als bei der Finesse) die Wellenlängendifferenz, bei der man beide Linien noch getrennt beobachten kann. Mit gegebenen Daten des Etalons~\cite{praktikum4} können die zu erwarteten Größen bestimmt werden zu:
+\begin{align*}
+    \mathcal{F}&= \frac{\pi\sqrt{R}}{1-R} \approx 19\\
+    A &= \frac{2nd\mathcal{F}}{\lambda_{\pi}^0} \approx 35\cdot10^4
+\end{align*}
+\newpage
+\noindent Nun werden die experimentellen Messdaten verwendet werden um die daraus berechnete Finesse und Auflösungsvermögen zu vergleichen:
+\begin{itemize}
+    \item In der \textbf{transversalen Konfiguration} wurden die drei einzelnen Ringe bis zu einem Strom von $I = \SI{4.7\pm 0.2}{\ampere}$ aufgelöst. Über die Magnetfeldkalibrierung berechnet sich $B = \SI{307.2\pm 6.1}{\milli\tesla}$. Nun kann durch due geringe Wellenlängendifferenz zwischen den gerade noch getrennt wahrnehmbaren Linien die Näherung $E \approx \frac{hc}{\lambda_{\pi}^0}$ mit $\Delta E = \mu_B B$ (für benachbarte Linien gilt $\Delta M = 1$) und erhält:
+        \begin{align*}
+            A &\approx \frac{\lambda_{\pi}^0}{\Delta \lambda} 
+                = \frac{\lambda_{\pi}^0}{\Delta \left(\frac{hc}{E}\right)}
+                =  \frac{\lambda_{\pi}^0}{\frac{hc}{E^2}\Delta E}
+                = \frac{hc}{\lambda_{\pi}^0\mu_B B} = \num{4.77e25} \pm 9.28\\
+            \mathcal{F} &= \frac{\lambda_{\pi}^0 A}{2nd} = \num{2.64e21} \pm \num{5.12e-4}
+        \end{align*}
+    \item Für die \textbf{longitudinale Konfiguration} wird analog vorgegangen. Es wurde ein Strom $I = \SI{1.7\pm 0.2}{\ampere}$ aufgezeichnet, woraus die magn. Flussdichte $B = \SI{111.7\pm 2.2}{\milli\tesla}$ ermittelt wird. Es folgt die analoge Berechnung:
+        \begin{align*}
+            A &\approx \frac{hc}{2\lambda_{\pi}^0\mu_B B} = \num{13.12e25} \pm \num{25.52}\\
+            \mathcal{F} &= \frac{\lambda_{\pi}^0 A}{2nd} = \num{7.25e21} \pm \num{1.41e-3}
+        \end{align*}
+    Der Faktor 2 im Nenner des Auflösungsvermögen kommt durch die Energiedifferenz, da die $\sigma^{\pm}$-Komponente energetisch doppelt so weit voneinander entfernt sind, als die $\pi$-Komponente.
+    \item Ein Ausschnitt von zwei lokalen Maxima wird mit der CCD Kamera ohne Magnetfeld aufgenommen. Dafür wird an die Messwerte eine Summe von zwei \texttt{Gauss}-Kurven mit linearem Untergrund angepasst. Da hier nur die Position der Maxima sowie deren Halbwertsbreite benötigt genügt die genannte Anpassungsfunktion (\cref{fig:finesse}). Es folgen die Anpassungsparameter zu:
+    \begin{align*}
+        \mu_1 &= \SI{1.01740\pm 0.00038}{\degree} & \sigma_1 &= \SI{0.02534 \pm 0.00036}{\degree}\\
+        \mu_2 &= \SI{1.29334\pm 0.00042}{\degree} & \sigma_2 &= \SI{0.02864 \pm 0.00042}{\degree}
+    \end{align*}
+    Für kleine $\alpha\approx 0$ folgt aus~\cref{equ:lambda}
+    \begin{equation*}
+        \lambda \approx \frac{2nd}{m}\left( 1- \frac{\sin^2(\alpha)}{2n^2} \right)
+            \approx \frac{2nd}{m}\left( 1-\frac{\alpha^2}{2n^2} \right)
+    \end{equation*}
+    Da zudem $\mu_1\approx\mu_2\approx 0$ und $k\gg1$ kann die oben genannte Näherung angewendet werden, wodurch sich der freie Spektralbereich umformt zu:
+    \begin{equation*}
+        \Delta\lambda = \lambda_2-\lambda_1\approx\frac{d}{nk}(\mu_2-\mu_1)
+    \end{equation*} 
+    Die Halbwertsbreite einer \texttt{Gauss}-Funktion ist gegeben als das ($2\sqrt{2\log(2)}$)-Fache der Standardabweichung und es folgt:
+    \begin{equation*}
+        \delta\lambda\approx \frac{d}{nk}2\sqrt{2\log(2)}\sigma
+    \end{equation*}
+    Hierbei wird $\sigma = \SI{0.02673 \pm 0.00027}{\degree}$ als varianzgewichtete Mittel von $\sigma_{1,2}$ ist (Winkel müssen in \texttt{rad} angegeben werden). Es folgt:
+    \begin{align*}
+        \mathcal{F} &\approx \frac{\mu_2-\mu_1}{2\sqrt{2\log(2)}\sigma} = \SI{4.383\pm 0.045}{}\\
+        A &= \frac{2nd\mathcal{F}}{\lambda_{pi}^0} = \SI{7.94(82)e4}{}
+    \end{align*}
+\end{itemize}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\linewidth]{plots/finesse.png}
+    \caption{Ausschnitt aus einem mit der CCDD-Kamera aufgenommenen Interferenzmusters ohne externes Magnetfeld}\label{fig:finesse}   
+\end{figure}
+
+\noindent Vergleicht man nun die drei experimentell bestimmten Werte mit dem theoretischen Wert sieht man, dass sich allein die letzte Methode zumindest in der richtigen Größenordnung befindet, wenn auch der theoretische Wert beinahe $\num{4.5}$-mal so groß ist. Die Werte aus der longitudinalen und transversalen Konfiguration bestätigt die Vermutung, dass hier ein Auswertungsfehler vorliegt, jedoch konnte der Fehler nach ausgiebigem Suchen und probieren nicht gefunden werden. Ein weiterer möglicher Einflussfaktor auf die ermittelten Werte ist die Breite $\sigma$ der verwendeten Anpassungsfunktion. Diese kann durch externe Effekte vergrößert sein, was zu einer Verfälschung der Ergebnisse führt. Zu den Ursachen zählen unter anderem die natürliche Linienbreite, die sich aus der endlichen Lebensdauer angeregter Zustände ergibt, sowie die Dopplerverbreiterung infolge der thermischen Bewegung der emmittierenden Atome. Eine genauere Betrachtung dieses Effekts wird im nachfolgenden Abschnitt behandelt.
+%--
+\clearpage
+\subsection{Doppler-Verbreiterung der Linien}
+Aufgrund der thermischen Bewegung der Teilchen wird die natürliche Linienbreite aufgrund des \texttt{Doppler}-Effektes vergrößert. Im Ruhesystem eines Cd-Atoms strahlt es (ohne externes Magnetfeld) mit der Wellenlänge $\lambda_{\pi}^0$. Bewegt es sich, wird diese Wellenlänge, so wird diese Wellenlänge gemäß des \texttt{Doppler}-Effekts vergrößert (Bewegung vom Beobachter weg) bzw. verkleinert (Bewegung auf den Beobachter zu). Mit der Annahme aus \cite{praktikum4}, dass die Cd-Lampe eine Temperatur von $T = \SI{1000}{\kelvin}$ hat, kann die Halbwertsbreite der Dopplerverbreiterung~\cite{Spektrum} für Cadmium mit einer Masse $m = \SI{112,4}{\mole}$\cite{CIAAW} wie folgt abgeschätzt werden:
+\begin{equation*}
+    \delta \lambda = \frac{\lambda_{\pi}^0}{c}\sqrt{\frac{8k_B T \log(2)}{m}} = \SI{1.4e-12}{\meter}
+\end{equation*}
+Da die angegebene Temperatur als grobe Schätzung der Größenordnung fungiert wird das Ergebnis ohne Fehler dargestellt. Im Vergleich zu dem mit der \texttt{CCD}-Kamera abgeschätztem Wert
+\begin{equation*}
+    \frac{\lambda_{\pi}^0}{A} \approx \SI{8.11e-12}{}
+\end{equation*}
+Hieraus folgt, dass die durch das Etalon mit bestimmten Auflösungsvermögen $A$ minimal auflösbare Verbreiterung fast 6-mal so groß ist, wie die Dopplerverbreiterung und diese aus deshalb nicht aufgelöst werden kann.
