@@ -317,7 +317,7 @@ Die Peakschwerpunkte müssen nun von Winkeleinheiten in Wellenlängen mittels de
 \end{align*}
 Somit erhält man für die Wellenlänge:
 \begin{align}
-    \lambda &= \frac{2nd}{k}\cos(\beta) = \frac{2nd}{k}\sqrt{1-\frac{\sin^2(\alpha)}{n^2}}\\
+    \lambda &= \frac{2nd}{k}\cos(\beta) = \frac{2nd}{k}\sqrt{1-\frac{\sin^2(\alpha)}{n^2}}\label{equ:lambda}\\
     \Rightarrow \lambda_{\sigma^{\pm}} - \lambda_{\pi} 
         &= \frac{2nd}{k}\left(\sqrt{1-\frac{\sin^2(\alpha_{\sigma^{\pm}})}{n^2}}
                                 - \sqrt{1-\frac{\sin^2(\alpha_{\pi})}{n^2}}\right) \nonumber
@@ -444,6 +444,47 @@ Hier ist $\Delta \lambda$ (anders als bei der Finesse) die Wellenlängendifferen
             \mathcal{F} &= \frac{\lambda_{\pi}^0 A}{2nd} = \num{7.25e21} \pm \num{1.41e-3}
         \end{align*}
     Der Faktor 2 im Nenner des Auflösungsvermögen kommt durch die Energiedifferenz, da die $\sigma^{\pm}$-Komponente energetisch doppelt so weit voneinander entfernt sind, als die $\pi$-Komponente.
-    \item 
+    \item Ein Ausschnitt von zwei lokalen Maxima wird mit der CCD Kamera ohne Magnetfeld aufgenommen. Dafür wird an die Messwerte eine Summe von zwei \texttt{Gauss}-Kurven mit linearem Untergrund angepasst. Da hier nur die Position der Maxima sowie deren Halbwertsbreite benötigt genügt die genannte Anpassungsfunktion (\cref{fig:finesse}). Es folgen die Anpassungsparameter zu:
+    \begin{align*}
+        \mu_1 &= \SI{1.01740\pm 0.00038}{\degree} & \sigma_1 &= \SI{0.02534 \pm 0.00036}{\degree}\\
+        \mu_2 &= \SI{1.29334\pm 0.00042}{\degree} & \sigma_2 &= \SI{0.02864 \pm 0.00042}{\degree}
+    \end{align*}
+    Für kleine $\alpha\approx 0$ folgt aus~\cref{equ:lambda}
+    \begin{equation*}
+        \lambda \approx \frac{2nd}{m}\left( 1- \frac{\sin^2(\alpha)}{2n^2} \right)
+            \approx \frac{2nd}{m}\left( 1-\frac{\alpha^2}{2n^2} \right)
+    \end{equation*}
+    Da zudem $\mu_1\approx\mu_2\approx 0$ und $k\gg1$ kann die oben genannte Näherung angewendet werden, wodurch sich der freie Spektralbereich umformt zu:
+    \begin{equation*}
+        \Delta\lambda = \lambda_2-\lambda_1\approx\frac{d}{nk}(\mu_2-\mu_1)
+    \end{equation*} 
+    Die Halbwertsbreite einer \texttt{Gauss}-Funktion ist gegeben als das ($2\sqrt{2\log(2)}$)-Fache der Standardabweichung und es folgt:
+    \begin{equation*}
+        \delta\lambda\approx \frac{d}{nk}2\sqrt{2\log(2)}\sigma
+    \end{equation*}
+    Hierbei wird $\sigma = \SI{0.02673 \pm 0.00027}{\degree}$ als varianzgewichtete Mittel von $\sigma_{1,2}$ ist (Winkel müssen in \texttt{rad} angegeben werden). Es folgt:
+    \begin{align*}
+        \mathcal{F} &\approx \frac{\mu_2-\mu_1}{2\sqrt{2\log(2)}\sigma} = \SI{4.383\pm 0.045}{}\\
+        A &= \frac{2nd\mathcal{F}}{\lambda_{pi}^0} = \SI{7.94(82)e4}{}
+    \end{align*}
 \end{itemize}
-%B-Feld für 1.7 A: 111.70589 mT +/-  2.23912
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\linewidth]{plots/finesse.png}
+    \caption{Ausschnitt aus einem mit der CCDD-Kamera aufgenommenen Interferenzmusters ohne externes Magnetfeld}\label{fig:finesse}   
+\end{figure}
+
+\noindent Vergleicht man nun die drei experimentell bestimmten Werte mit dem theoretischen Wert sieht man, dass sich allein die letzte Methode zumindest in der richtigen Größenordnung befindet, wenn auch der theoretische Wert beinahe $\num{4.5}$-mal so groß ist. Die Werte aus der longitudinalen und transversalen Konfiguration bestätigt die Vermutung, dass hier ein Auswertungsfehler vorliegt, jedoch konnte der Fehler nach ausgiebigem Suchen und probieren nicht gefunden werden. Ein weiterer möglicher Einflussfaktor auf die ermittelten Werte ist die Breite $\sigma$ der verwendeten Anpassungsfunktion. Diese kann durch externe Effekte vergrößert sein, was zu einer Verfälschung der Ergebnisse führt. Zu den Ursachen zählen unter anderem die natürliche Linienbreite, die sich aus der endlichen Lebensdauer angeregter Zustände ergibt, sowie die Dopplerverbreiterung infolge der thermischen Bewegung der emmittierenden Atome. Eine genauere Betrachtung dieses Effekts wird im nachfolgenden Abschnitt behandelt.
+%--
+\clearpage
+\subsection{Doppler-Verbreiterung der Linien}
+Aufgrund der thermischen Bewegung der Teilchen wird die natürliche Linienbreite aufgrund des \texttt{Doppler}-Effektes vergrößert. Im Ruhesystem eines Cd-Atoms strahlt es (ohne externes Magnetfeld) mit der Wellenlänge $\lambda_{\pi}^0$. Bewegt es sich, wird diese Wellenlänge, so wird diese Wellenlänge gemäß des \texttt{Doppler}-Effekts vergrößert (Bewegung vom Beobachter weg) bzw. verkleinert (Bewegung auf den Beobachter zu). Mit der Annahme aus \cite{praktikum4}, dass die Cd-Lampe eine Temperatur von $T = \SI{1000}{\kelvin}$ hat, kann die Halbwertsbreite der Dopplerverbreiterung~\cite{Spektrum} für Cadmium mit einer Masse $m = \SI{112,4}{\mole}$\cite{CIAAW} wie folgt abgeschätzt werden:
+\begin{equation*}
+    \delta \lambda = \frac{\lambda_{\pi}^0}{c}\sqrt{\frac{8k_B T \log(2)}{m}} = \SI{1.4e-12}{\meter}
+\end{equation*}
+Da die angegebene Temperatur als grobe Schätzung der Größenordnung fungiert wird das Ergebnis ohne Fehler dargestellt. Im Vergleich zu dem mit der \texttt{CCD}-Kamera abgeschätztem Wert
+\begin{equation*}
+    \frac{\lambda_{\pi}^0}{A} \approx \SI{8.11e-12}{}
+\end{equation*}
+Hieraus folgt, dass die durch das Etalon mit bestimmten Auflösungsvermögen $A$ minimal auflösbare Verbreiterung fast 6-mal so groß ist, wie die Dopplerverbreiterung und diese aus deshalb nicht aufgelöst werden kann.
