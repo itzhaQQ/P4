@@ -10,13 +10,13 @@ Solange die Elektronen nicht genügend kinetische Energie haben, um ein Atom anz
 \vspace{0.3cm}\\
 Die niedrigste Anregungsenergie des Quecksilberatoms liegt bei etwa
 \begin{equation}
-\Delta E \approx \SI{4.67}{\electronvolt} 
+\Delta E \approx \SI{4.9}{\electronvolt} 
 \end{equation}
-und entspricht dem Übergang vom Grundzustand $6^1S_0$ in den angeregten Zustand $6^3P_1$ \cite{Hg_excitationEnergy}.
+und entspricht dem Übergang vom Grundzustand $6^1S_0$ in den angeregten Zustand $6^3P_1$ \cite{hg_EE}.
 \vspace{0.3cm}\\
 Bevor die Elektronen die Anode erreichen, müssen sie eine kleine Gegenspannung $U_G$ überwinden. Elektronen, die durch inelastische Stöße zu viel Energie verlieren, können diese Barriere nicht überwinden und tragen daher nicht zum gemessenen Anodenstrom $I_A$ bei.
 \vspace{0.3cm}\\
-Wenn die Beschleunigungsspannung $U_B$ schrittweise erhöht wird, steigt der Anodenstrom zunächst an, da mehr Elektronen die Anode erreichen. Sobald $e U_B \geq \SI{4.67}{\electronvolt}$ ist, beginnen inelastische Stöße $\rightarrow$ einige Elektronen verlieren Energie $\rightarrow$ weniger Elektronen überwinden $U_G$ $\rightarrow$ $I_A$ sinkt. Mit weiter steigender Spannung gewinnen die Elektronen erneut genug Energie $\rightarrow$ $I_A$ steigt wieder, bis eine zweite Anregung möglich wird $\rightarrow$ zweites Minimum. So entsteht eine periodische Folge von Maxima und Minima im Strom-Spannungs-Diagramm.
+Wenn die Beschleunigungsspannung $U_B$ schrittweise erhöht wird, steigt der Anodenstrom zunächst an, da mehr Elektronen die Anode erreichen. Sobald $e U_B \geq \SI{4.9}{\electronvolt}$ ist, beginnen inelastische Stöße $\rightarrow$ einige Elektronen verlieren Energie $\rightarrow$ weniger Elektronen überwinden $U_G$ $\rightarrow$ $I_A$ sinkt. Mit weiter steigender Spannung gewinnen die Elektronen erneut genug Energie $\rightarrow$ $I_A$ steigt wieder, bis eine zweite Anregung möglich wird $\rightarrow$ zweites Minimum. So entsteht eine periodische Folge von Maxima und Minima im Strom-Spannungs-Diagramm.
 \vspace{0.3cm}\\
 Der Abstand zwischen zwei benachbarten Maxima oder Minima entspricht der Anregungsenergie:
 \begin{equation}
@@ -92,20 +92,56 @@ Alle Datensätze sollten unmittelbar nach der Aufnahme gespeichert werden, wobei
 
 Zur Bestimmung der Anregungsenergie des Quecksilberatoms wurde der Anodenstrom $I_A$ als Funktion der Beschleunigungsspannung $U_B$ für verschiedene Einstellungen aufgenommen. Die erhaltenen Franck-Hertz-Kurven zeigen eine Reihe periodischer Maxima, die jeweils dem Zustand entsprechen, in dem die Elektronen genügend kinetische Energie erworben haben, um ein Quecksilberatom durch inelastische Stöße anzuregen. Durch Bestimmen der Positionen mindestens fünf aufeinanderfolgender Maxima in den gemessenen $I_A(U_B)$-Kurven lässt sich der Spannungsabstand $\Delta U$ zwischen den Peaks ermitteln. Dieser Abstand spiegelt direkt die zur Anregung des Atoms vom Grundzustand in den ersten angeregten Zustand benötigte Energie wider. Die Anregungsenergie ist $\Delta E$. 
 \vspace{0.3cm}\\
-In diesem Experiment wurde ein mittlerer Spannungsabstand von etwa $\Delta U = [\text{Ergebnis einsetzen}]\,\mathrm{V}$ gefunden, woraus sich eine Anregungsenergie von $\Delta E \approx [\text{Ergebnis einsetzen}]\,\mathrm{eV}$ ergibt. Dieser Wert liegt im guten Einklang mit der bekannten Anregungsenergie des Übergangs $6^1S_0 \to 6^3P_1$ im Quecksilberatom, welcher bei etwa $4{,}9\,\mathrm{eV}$ liegt.
-\vspace{0.3cm}\\
-Die Spannungsunsicherheiten wurden auf $\pm 2\%$ des Messbereichs und zusätzlich auf $\pm 0{,}5\%$ des maximal gemessenen Werts geschätzt, in Übereinstimmung mit den Spezifikationen des Cassy-Moduls. Zur Bestimmung von $\Delta E$ wurden die fünf höchsten Maxima jeder Anodenspannungskurve mit einer einzelnen Gaußfunktion angepasst:
-\vspace{0.3cm}\\
+In diesem Experiment wurde ein mittlerer Spannungsabstand gefunden, woraus sich eine Anregungsenergie ergibt (werte sind in \cref{tab:franckU2} und \cref{tab:franckT}). Dieser Wert liegt im guten Einklang mit der bekannten Anregungsenergie des Übergangs $6^1S_0 \to 6^3P_1$ im Quecksilberatom, welcher bei etwa $4{,}9\,\mathrm{eV}$ liegt (\cref{fig:Hg_energyLevels}).
+\vspace{0.3cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/EnergieniveausvonQuecksilber.png}
+    \caption{Energieniveaus von Quecksilber (\cite{praktikum4}) }
+    \label{fig:Hg_energyLevels}
+\end{figure}
+
+Die Spannungsunsicherheiten wurden auf $\pm 2\%$ des Messbereichs und zusätzlich auf $\pm 0.5\%$ des maximal gemessenen Werts geschätzt, in Übereinstimmung mit den Spezifikationen des Cassy-Moduls. Zur Bestimmung von $\Delta E$ wurden die fünf höchsten Maxima jeder Anodenspannungskurve mit einer einzelnen Gaußfunktion angepasst:
+
 \begin{equation}
   U_A = O + A \exp\!\biggl[-\frac{(U_B - \mu)^2}{2\,\sigma^2}\biggr],
 \end{equation}
-\vspace{0.3cm}\\
-wobei $O$ der Offset, $A$ die Amplitude, $\mu$ die Peakposition und $\sigma$ die Standardabweichung des Peaks ist. Die Anregungsenergie ergibt sich dann aus
-\vspace{0.3cm}\\
+
+\noindent wobei $O$ der Offset, $A$ die Amplitude, $\mu$ die Peakposition und $\sigma$ die Standardabweichung des Peaks ist. Die Anregungsenergie ergibt sich dann aus
+\vspace{0.3cm}
 \begin{equation}
   \Delta E = e \,\Delta U_B,
 \end{equation}
+\vspace{0.3cm}
+\noindent wobei $\Delta U_B$ die Differenz der mittels $\mu$ bestimmten Peakpositionen ist. \cref{tab:franckU2} und \cref{tab:franckT} fasst die mittleren Werte von $\Delta E$ sowie die entsprechenden Breiten $\sigma$ zusammen.
 \vspace{0.3cm}\\
-wobei $\Delta U_B$ die Differenz der mittels $\mu$ bestimmten Peakpositionen ist. Tabelle 3 fasst die mittleren Werte von $\Delta E$ sowie die entsprechenden Breiten $\sigma$ zusammen.
+Die anderen Übergänge treten seltener auf, was durch den Gesamtwirkungsquerschnitt von Quecksilber für die Elektronenstoßanregung erklärt werden kann (\cref{fig:Querschnitt}). 
+Da die Elektronen kontinuierlich Energie verlieren, ist der Gesamtwirkungsquerschnitt im Energiebereich der Übergänge 1, 2 und 3 am höchsten. Daher liegt unser gemittelter Wert genau in der Mitte dieses Bereichs. Übergang 4 wird erst bei höheren Energien relevant.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figs/TotalerWirkungsquerschnitt.png}
+  \caption{Totaler Wirkungsquerschnitt von Hg für Elektronenstoßanregung(\cite{praktikum4}).}
+  \label{fig:Querschnitt}
+\end{figure}
+
+\subsection*{Abhängigkeit der Gegenspannung}
+
+In \cref{fig:UGall} sind alle Anodenstromkurven für unterschiedliche Gegenspannungen zusammen dargestellt. Man erkennt deutlich, dass das Stromniveau mit steigender Gegenspannung abfällt. Das ist nachvollziehbar, da eine höhere Gegenspannung verhindert, dass Elektronen die Anodenplatte erreichen und so Strom erzeugen. Außerdem verschiebt sich jedes Maximum mit zunehmender Gegenspannung leicht zu höheren Beschleunigungsspannungen (also nach rechts).
+
+\subsection*{Abhängigkeit der Temperatur}
+
+In \cref{fig:Tall} zeigt sich, dass die Amplitude der Anodenstrommaxima mit steigender Temperatur abnimmt. Dieses Verhalten lässt sich folgendermaßen erklären: Bei höheren Temperaturen steigt der Quecksilberdampfdruck gemäß
+
+\begin{equation}
+\log p = 10.55 - \frac{3333}{T} - 0.85\,\log T
+\end{equation}
+
+\noindent wobei $p$ in Torr und $T$ in Kelvin angegeben ist \cite{praktikum4}. Mit steigendem Dampfdruck wird die mittlere freie Weglänge der Elektronen kürzer, sodass sie im Mittel weniger kinetische Energie gewinnen. Dies führt zu kleineren und breiteren Maxima in der Anodenstromkurve, genau wie beobachtet.
+\vspace{0.3cm}\\
+Aus den Werten in Tabelle 4 ergibt sich, dass der totale Wirkungsquerschnitt für den Übergang $^1S_0 \to {}^3P_0$ bei kleineren Elektronenenergien noch deutlicher ausgeprägt ist. Deshalb liegt unsere gemessene Anregungsenergie um etwa $4,9$V.
+\vspace{0.3cm}\\
+Setzt man die Dampfdruckgleichung bei $T = 165\,^\circ\mathrm{C}$ ein, erhält man einen Quecksilberdampfdruck von etwa $0,11$Torr; eine Erhöhung der Temperatur um $20$K erhöht den Druck auf ca. $0,15$Torr. Sowohl die Gleichung als auch unsere Messdaten zeigen, dass der Dampfdruck beträchtlich schwanken kann. Solche Druckänderungen beeinflussen, wie weit sich die Elektronen im Mittel zwischen zwei Stößen bewegen und damit, welche Anregungsprozesse stattfinden können. Die Untersuchung weiterer Übergänge liegt jedoch nicht im Fokus dieses Experiments - wir konzentrieren uns auf die Beobachtung eines einzelnen Energieübergangs.
 
 
+Im Quecksilber-Franck-Hertz-Versuch ergibt sich das enge Temperaturintervall daraus, dass der Quecksilber­dampfdruck $p(T)$ mit der Temperatur $T$ exponentiell ansteigt und dadurch die mittlere freie Weglänge $\lambda$ der Elektronen drastisch abnimmt. Bereits wenige Kelvin Toleranz über oder unter der Optimaltemperatur führen zu $\lambda\gg L$ (kaum inelastische Stöße) bzw. $\lambda\ll L$ (Übermaß an elastischen und Mehrfachstößen, Raumladung und Strahlungsrückhaltung), sodass die scharf ausgeprägten Strommaxima entweder ganz ausbleiben oder verschmiert werden. Nur in einem engen Temperaturbereich sind die Stoßbedingungen so gewählt, dass die Elektronen gerade genügend kinetische Energie zwischen den Kollisionen sammeln und abgeben, um klar erkennbare Franck-Hertz-Maxima zu erzeugen.
